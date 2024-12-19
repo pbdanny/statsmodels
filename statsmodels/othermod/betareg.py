@@ -104,7 +104,7 @@ class BetaModel(GenericLikelihoodModel):
                  link_precision=families.links.Log(), **kwds):
 
         etmp = np.array(endog)
-        assert np.all((0 < etmp) & (etmp < 1))
+        assert np.all((0 < etmp) & (etmp < 1)), f"endog variable must not be 0 or 1"
         if exog_precision is None:
             extra_names = ['precision']
             exog_precision = np.ones((len(endog), 1), dtype='f')
